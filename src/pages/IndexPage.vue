@@ -1,0 +1,43 @@
+<template>
+  <q-page class="flex flex-center"
+    ><RouterLink to="/novoCliente" class="">Novo cliente</RouterLink>
+    <ListaProdutos
+      :produtos="arrProdutos"
+      @comprar="onComprar"
+      @detalhes="onDetalhes"
+      @returar="onRetirar"
+      :botoes="['comprar']"
+  /></q-page>
+</template>
+
+<script>
+import { defineComponent } from "vue";
+import services from "src/services";
+import cartStore from "src/stores/cartStore";
+import ListaProdutos from "src/components/ListaProdutos.vue";
+
+export default defineComponent({
+  name: "IndexPage",
+  components: {
+    ListaProdutos,
+  },
+  data() {
+    return {
+      arrProdutos: [],
+    };
+  },
+  created() {
+    services.getProdutos((prods) => {
+      this.arrProdutos = prods;
+    });
+  },
+  methods: {
+    onComprar(produto) {
+      console.log(produto);
+      console.log(cartStore.carrinho);
+      cartStore.addProduto(produto, 1);
+      console.log(cartStore.carrinho);
+    },
+  },
+});
+</script>
