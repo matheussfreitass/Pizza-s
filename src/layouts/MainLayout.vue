@@ -12,7 +12,7 @@
         />
 
         <q-toolbar-title>
-          Pizza's
+          <q-btn class="bg-black text-white">Pizza's</q-btn>
           <q-btn
             dense
             color="yellow-9"

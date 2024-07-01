@@ -3,6 +3,11 @@ import Login from "../pages/LoginPage.vue";
 const routes = [
   {
     path: "/",
+    component: () => import("layouts/MainHome.vue"),
+    children: [{ path: "", component: () => import("pages/LoginPage.vue") }],
+  },
+  {
+    path: "/Catalogo",
     component: () => import("layouts/MainLayout.vue"),
     children: [{ path: "", component: () => import("pages/IndexPage.vue") }],
   },
@@ -12,6 +17,11 @@ const routes = [
     children: [
       { path: "", component: () => import("pages/CadastroClientePage.vue") },
     ],
+  },
+  {
+    path: "/TermosCondicoes",
+    component: () => import("layouts/MainLayout.vue"),
+    children: [{ path: "", component: () => import("pages/LgpdPage.vue") }],
   },
 
   // Always leave this as last one,
@@ -23,7 +33,7 @@ const routes = [
   {
     path: "/Login",
     name: "Login",
-    component: Login,
+    component: () => import("pages/LoginPage.vue"),
   },
 ];
 

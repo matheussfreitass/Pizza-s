@@ -46,10 +46,13 @@
         /> </template
     ></q-input>
     <div class="q-pa-md">
-      <q-checkbox v-model="val" />
-    </div>
-    <div class="q-pa-md">
-      <q-checkbox v-model="val1" />
+      <div class="q-gutter-sm">
+        <q-checkbox
+          rigth-label
+          v-model="rigth"
+          label="Eu aceito os termos e condições da pagina"
+        ></q-checkbox>
+      </div>
     </div>
     <q-btn label="Salvar" color="primary" @click="salvar"></q-btn>
   </q-form>
@@ -103,7 +106,8 @@ export default {
   },
   setup() {
     return {
-      val: ref(true),
+      rigth: ref(true),
+      val1: ref(true),
     };
   },
 };
