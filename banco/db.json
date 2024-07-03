@@ -27,7 +27,35 @@
       "nome": "Guaraná",
       "descricao": "Refrigerante",
       "preco": 3,
-      "imagem": "https://delicias-uk.com/16310-large_default/guarana-antartica-em-lata-330ml.jpg"
+      "imagem": "https://upload.wikimedia.org/wikipedia/commons/b/b1/Guarana-antarctica_2020.svg"
+    },
+    {
+      "id": "5",
+      "nome": "Pizza broto 30cm",
+      "descricao": "Pizza",
+      "preco": 35,
+      "imagem": "https://www.svgrepo.com/show/295489/pizza.svg"
+    },
+    {
+      "id": "6",
+      "nome": "Pizza média 35cm",
+      "descricao": "Pizza",
+      "preco": 45,
+      "imagem": "https://www.svgrepo.com/show/295489/pizza.svg"
+    },
+    {
+      "id": "7",
+      "nome": "Pizza grande 45cm",
+      "descricao": "Pizza",
+      "preco": 60,
+      "imagem": "https://www.svgrepo.com/show/295489/pizza.svg"
+    },
+    {
+      "id": "8",
+      "nome": "Pizza família 50cm",
+      "descricao": "Pizza",
+      "preco": 80,
+      "imagem": "https://www.svgrepo.com/show/295489/pizza.svg"
     }
   ]
 }

@@ -1,5 +1,5 @@
 <template>
-  <q-card class="q-ma-lg q-pa-md">
+  <div class="q-ma-lg q-pa-md">
     <h5>Lei Geral de Proteção de Dados(LGPD)</h5>
 
     <p class="LGPDText">
@@ -41,9 +41,27 @@
       encarregado de proteção de dados é o Matheus Farias Freitas e estará
       disponível através do e-mail: lgpd@pizza's.com.br
     </p>
-  </q-card>
+
+    <h5>Termos de Usuário</h5>
+    <p class="declaracaoText">
+      Declaro que li e compreendi os termos e condições do site Pizza's. Estou
+      ciente de que meus dados de endereço e métodos de pagamento serão
+      utilizados exclusivamente para facilitar minhas transações e consumo
+      dentro do site. Concordo que essas informações serão tratadas com
+      segurança e confidencialidade, conforme descrito nas políticas de
+      privacidade da plataforma. Estou confortável em prosseguir com o uso dos
+      serviços oferecidos pelo site, confiando na adequada proteção dos meus
+      dados pessoais.
+    </p>
+  </div>
 </template>
 
 <script></script>
 
-<style></style>
+<style>
+.declaracaoText,
+.LGPDText {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: large;
+}
+</style>

@@ -1,6 +1,8 @@
 <template>
   <q-page class="flex flex-center"
-    ><RouterLink to="/novoCliente" class="">Novo cliente</RouterLink>
+    ><RouterLink to="/novoCliente" class=""
+      ><q-btn color="black">Cadastre-se</q-btn></RouterLink
+    >
     <ListaProdutos
       :produtos="arrProdutos"
       @comprar="onComprar"

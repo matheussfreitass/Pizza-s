@@ -1,11 +1,11 @@
 <template>
-  <q-card class="q-ma-lg q-pa-md">
-    <h5>Cadastro Clientes</h5>
+  <q-form class="q-ma-lg q-pa-md">
+    <h5>Cadastre-se</h5>
     <form-cliente
       @salvarCliente="onSalvarCliente"
       :cliente="cliente"
     ></form-cliente>
-  </q-card>
+  </q-form>
 </template>
 
 <script>

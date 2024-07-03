@@ -48,13 +48,18 @@
     <div class="q-pa-md">
       <div class="q-gutter-sm">
         <q-checkbox
+          class="termos"
           rigth-label
           v-model="rigth"
-          label="Eu aceito os termos e condições da pagina"
-        ></q-checkbox>
+          label="Declaro que li e aceito os termos e condições da página"
+        >
+        </q-checkbox>
       </div>
     </div>
     <q-btn label="Salvar" color="primary" @click="salvar"></q-btn>
+    <q-btn color="black">
+      <router-link to="/TermosCondicoes">Termos e condicoes</router-link></q-btn
+    >
   </q-form>
 </template>
 
