@@ -14,7 +14,6 @@
       ]"
     >
     </q-input>
-
     <q-input
       color="orange"
       bottom-slots
@@ -26,8 +25,36 @@
       :rules="[(val) => validaCPF(val) || 'CPF inválido']"
     >
     </q-input>
-    {{ clienteModel }}
-    {{ cliente }}
+    <q-input
+      color="orange"
+      ref="email"
+      v-model="loginForm.email"
+      label="Endereço de e-mail"
+      dense
+      type="email"
+      bottom-slots
+      @blur="atualizaVerificacaoEmail"
+      autofocus
+      @focus="__reiniciaFormularioLogin"
+      :error="mostraErro"
+      error-message="Insira um enredeço de e-mail válido"
+    ></q-input>
+    <q-input
+      dense
+      v-model="loginForm.password"
+      color="orange"
+      label="Senha"
+      :type="loginForm.isPwd ? 'password' : 'text'"
+      @keyup.enter="
+        login();
+        $event.target.blur();
+      "
+      ><q-icon
+        :name="loginForm.isPwd ? 'visibility_off' : 'visibility'"
+        class="cursor-pointer"
+        color="grey"
+        @click="loginForm.isPwd = !loginForm.isPwd"
+    /></q-input>
     <q-input
       rounded
       bottom-slots
@@ -46,6 +73,11 @@
         /> </template
     ></q-input>
     <div class="q-pa-md">
+      <q-btn color="primary">
+        <router-link to="/TermosCondicoes"
+          >Termos e condicoes</router-link
+        ></q-btn
+      >
       <div class="q-gutter-sm">
         <q-checkbox
           class="termos"
@@ -57,9 +89,6 @@
       </div>
     </div>
     <q-btn label="Salvar" color="primary" @click="salvar"></q-btn>
-    <q-btn color="black">
-      <router-link to="/TermosCondicoes">Termos e condicoes</router-link></q-btn
-    >
   </q-form>
 </template>
 
@@ -78,6 +107,9 @@ export default {
   },
   data() {
     return {
+      loginForm: {
+        email: "",
+      },
       clienteModel: {
         nome: "",
         cpf: "",
