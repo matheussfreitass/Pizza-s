@@ -1,5 +1,22 @@
 {
-  "clientes": [],
+  "clientes": [
+    {
+      "id": "",
+      "nome": "user user",
+      "cpf": "000.000.000-00",
+      "email": "user@user.com",
+      "password": "0000",
+      "confirmPassword": "0000"
+    },
+    {
+      "id": "",
+      "nome": "i a ",
+      "cpf": "000.000.000-01",
+      "email": "o@o.com",
+      "password": "000",
+      "confirmPassword": "000"
+    }
+  ],
   "produtos": [
     {
       "id": "1",
@@ -45,7 +62,7 @@
     },
     {
       "id": "7",
-      "nome": "Pizza grande 45cm",
+      "nome": "Pizza grande 40cm",
       "descricao": "Pizza",
       "preco": 60,
       "imagem": "https://www.svgrepo.com/show/295489/pizza.svg"

@@ -3,14 +3,15 @@
     <q-input
       rounded
       v-model="clienteModel.nome"
-      label="Nome"
+      label="Nome completo"
       color="orange"
       hint="Informe seu nome"
       clearable
       lazy-rules
       :rules="[
         (val) => val.length > 0 || 'Campo Obrigatório',
-        (val) => val.indexOf(' ') > 0 || 'Nome muito grande',
+        (val) =>
+          val.indexOf(' ') > 0 || 'Nome precisa ser separado do sobrenome',
       ]"
     >
     </q-input>
@@ -28,33 +29,53 @@
     <q-input
       color="orange"
       ref="email"
-      v-model="loginForm.email"
+      v-model="clienteModel.email"
       label="Endereço de e-mail"
       dense
       type="email"
       bottom-slots
       @blur="atualizaVerificacaoEmail"
       autofocus
-      @focus="__reiniciaFormularioLogin"
       :error="mostraErro"
       error-message="Insira um enredeço de e-mail válido"
     ></q-input>
     <q-input
       dense
-      v-model="loginForm.password"
+      v-model="clienteModel.password"
       color="orange"
       label="Senha"
-      :type="loginForm.isPwd ? 'password' : 'text'"
+      :type="clienteModel.isPwd ? 'password' : 'text'"
       @keyup.enter="
         login();
         $event.target.blur();
       "
       ><q-icon
-        :name="loginForm.isPwd ? 'visibility_off' : 'visibility'"
+        :name="clienteModel.isPwd ? 'visibility_off' : 'visibility'"
         class="cursor-pointer"
         color="grey"
-        @click="loginForm.isPwd = !loginForm.isPwd"
+        @click="clienteModel.isPwd = !clienteModel.isPwd"
     /></q-input>
+    <q-input
+      dense
+      v-model="clienteModel.confirmPassword"
+      color="orange"
+      label="Repita a Senha"
+      :type="clienteModel.isPwd ? 'password' : 'text'"
+      :rules="[
+        (val) => val.length > 0 || 'Campo Obrigatório',
+        (val) => val === clienteModel.password || 'As senhas não correspondem',
+      ]"
+      @keyup.enter="
+        login();
+        $event.target.blur();
+      "
+      ><q-icon
+        :name="clienteModel.isPwd ? 'visibility_off' : 'visibility'"
+        class="cursor-pointer"
+        color="grey"
+        @click="clienteModel.isPwd = !clienteModel.isPwd"
+    /></q-input>
+
     <q-input
       rounded
       bottom-slots
@@ -82,13 +103,18 @@
         <q-checkbox
           class="termos"
           rigth-label
-          v-model="rigth"
+          v-model="checkboxChecked"
           label="Declaro que li e aceito os termos e condições da página"
         >
         </q-checkbox>
       </div>
     </div>
-    <q-btn label="Salvar" color="primary" @click="salvar"></q-btn>
+    <q-btn
+      label="Salvar"
+      color="primary"
+      @click="salvar"
+      :disabled="!emailValid || !checkboxChecked"
+    ></q-btn>
   </q-form>
 </template>
 
@@ -97,7 +123,8 @@ import services from "src/services";
 import { ref } from "vue";
 
 export default {
-  name: "FormCliente",
+  name: "FormCadastroCliente",
+  emits: ["salvarCliente"],
 
   props: {
     cliente: {
@@ -107,21 +134,35 @@ export default {
   },
   data() {
     return {
-      loginForm: {
-        email: "",
-      },
       clienteModel: {
         nome: "",
         cpf: "",
+        email: "",
+        isPwd: true,
+        password: "",
       },
+      emailValid: false,
+      checkboxChecked: false,
     };
   },
-  created() {
-    if (this.cliente) {
-      this.clienteModel = this.cliente;
-    }
-  },
   methods: {
+    atualizaVerificacaoEmail() {
+      // eslint-disable-next-line
+      let reg =
+        /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,24}))$/;
+      let valid = reg.test(this.clienteModel.email);
+
+      if (valid) {
+        console.log("email is valid");
+        this.emailValid = true;
+        this.showError = false;
+      } else {
+        console.log("email invalid");
+        this.emailValid = false;
+        this.showError = true;
+      }
+    },
+
     validaCPF(cpf) {
       return services.validaCPF(cpf);
     },
@@ -133,7 +174,7 @@ export default {
         this.$refs.form.validate().then((valido) => {
           if (valido) {
             // Lógica para salvar os dados ou enviar para o backend
-            services.clientes.saveCliente(this.clienteModel);
+            this.$emit("salvarCliente", this.clienteModel);
           } else {
             services.mensagemErro("Verifique os campos obrigatórios.");
           }
@@ -141,10 +182,14 @@ export default {
       }
     },
   },
+  created() {
+    if (this.cliente) {
+      this.clienteModel = this.cliente;
+    }
+  },
   setup() {
     return {
       rigth: ref(true),
-      val1: ref(true),
     };
   },
 };

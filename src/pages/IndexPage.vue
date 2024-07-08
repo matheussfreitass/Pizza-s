@@ -1,6 +1,6 @@
 <template>
   <q-page class="flex flex-center"
-    ><RouterLink to="/novoCliente" class=""
+    ><RouterLink to="/CadastroCliente" class=""
       ><q-btn color="black">Cadastre-se</q-btn></RouterLink
     >
     <ListaProdutos
