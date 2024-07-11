@@ -14,6 +14,16 @@ const clientesServices = {
         console.log(erro);
       });
   },
+  updateCliente(cliente) {
+    jsonAPIClientes
+      .put(`clientes/${cliente.id}`, cliente)
+      .then((retorno) => {
+        console.log(retorno);
+      })
+      .catch((erro) => {
+        console.log(erro);
+      });
+  },
 };
 
 export default clientesServices;

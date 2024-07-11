@@ -1,20 +1,12 @@
 {
   "clientes": [
     {
-      "id": "",
-      "nome": "user user",
-      "cpf": "000.000.000-00",
-      "email": "user@user.com",
-      "password": "0000",
-      "confirmPassword": "0000"
-    },
-    {
-      "id": "",
-      "nome": "i a ",
-      "cpf": "000.000.000-01",
-      "email": "o@o.com",
-      "password": "000",
-      "confirmPassword": "000"
+      "id": "c4a9",
+      "nome": "teste teste",
+      "cpf": "111.111.111-11",
+      "email": "teste@teste.com",
+      "password": "teste",
+      "confirmPassword": "teste"
     }
   ],
   "produtos": [

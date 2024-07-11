@@ -16,6 +16,16 @@
     >
     </q-input>
     <q-input
+      v-model="date"
+      filled
+      type="date"
+      hint="Native date"
+      color="orange"
+      min="1800-01-01"
+      max="3000-12-31"
+    />
+
+    <q-input
       color="orange"
       bottom-slots
       v-model="clienteModel.cpf"
@@ -38,7 +48,9 @@
       autofocus
       :error="mostraErro"
       error-message="Insira um enredeço de e-mail válido"
-    ></q-input>
+    >
+      <q-icon name="mail" color="grey" />
+    </q-input>
     <q-input
       dense
       v-model="clienteModel.password"
@@ -184,7 +196,10 @@ export default {
   },
   created() {
     if (this.cliente) {
+      this.clienteModel.id = this.cliente.id;
       this.clienteModel = this.cliente;
+      this.clienteModel.nome = this.cliente.nome;
+      this.clienteModel.cpf = this.cliente.cpf;
     }
   },
   setup() {

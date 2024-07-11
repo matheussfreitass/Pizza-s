@@ -19,12 +19,16 @@ export default {
   },
   data() {
     return {
-      cliente: { id: "", nome: "", cpf: "" },
+      cliente: { nome: "", cpf: "" },
     };
   },
   methods: {
     onSalvarCliente(cliente) {
-      services.clientes.saveCliente(cliente);
+      if (cliente.id) {
+        services.clientes.updateCliente(cliente);
+      } else {
+        services.clientes.saveCliente(cliente);
+      }
     },
   },
 };
