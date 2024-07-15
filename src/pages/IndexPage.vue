@@ -1,8 +1,5 @@
 <template>
-  <q-page class="flex flex-center"
-    ><RouterLink to="/CadastroCliente" class=""
-      ><q-btn color="black">Cadastre-se</q-btn></RouterLink
-    >
+  <q-page class="flex flex-center">
     <ListaProdutos
       :produtos="arrProdutos"
       @comprar="onComprar"
@@ -43,3 +40,8 @@ export default defineComponent({
   },
 });
 </script>
+<style>
+#cadastroBtn {
+  background-color: red;
+}
+</style>

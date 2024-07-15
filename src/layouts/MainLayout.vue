@@ -23,12 +23,19 @@
             <q-badge color="green" floating>{{ cart.length }}</q-badge>
           </q-btn>
         </q-toolbar-title>
-
-        <div>Welcome</div>
+        <div><p class="txt">teste</p></div>
+        <div class="btnEssentailsLinks">
+          <p></p>
+          <RouterLink to="/CadastroCliente" class=""
+            ><q-btn color="black" glossy="true">Cadastre-se</q-btn></RouterLink
+          ><RouterLink to="/">
+            <q-btn color="black" glossy="true">Login</q-btn>
+          </RouterLink>
+        </div>
       </q-toolbar>
     </q-header>
 
-    <q-drawer v-model="leftDrawerOpen" show-if-above bordered>
+    <q-drawer v-model="leftDrawerOpen" show-if-above bordered dark="true">
       <q-list>
         <q-item-label header> Menu </q-item-label>
 
@@ -159,3 +166,4 @@ export default defineComponent({
   },
 });
 </script>
+<style></style>

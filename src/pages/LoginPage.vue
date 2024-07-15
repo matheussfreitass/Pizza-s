@@ -51,9 +51,13 @@
             />
           </q-card-actions>
           <q-card-section class="text-center q-pa-none">
-            <p class="text-grey-6">Crie uma conta</p>
+            <RouterLink to="/CadastroCliente" class="">
+              <p class="text-grey-6">Crie uma conta</p>
+            </RouterLink>
 
-            <p class="text-grey-6">Acesse aqui para consulta de preços</p>
+            <RouterLink to="/Catalogo">
+              <p class="text-grey-6">Acesse aqui para consulta de preços</p>
+            </RouterLink>
           </q-card-section>
         </q-card>
       </div>
