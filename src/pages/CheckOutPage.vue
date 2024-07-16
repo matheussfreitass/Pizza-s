@@ -6,6 +6,7 @@
     :item="item"
     @remover="onRemover"
   ></CheckOutItem>
+  <h5>Tota: R$ {{ total.toFixed(2) }}</h5>
 </template>
 <script>
 import { data } from "autoprefixer";
@@ -24,6 +25,13 @@ export default {
   },
   created() {
     this.carrinho = cartStore.carrinho;
+  },
+  computed: {
+    total() {
+      return this.carrinho.reduce((acc, item) => {
+        return acc + item.produto.preco * item.qtd;
+      }, 0);
+    },
   },
   methods: {
     onRemover(id) {

@@ -26,9 +26,7 @@
             <q-badge color="green" floating>{{ cart.length }}</q-badge>
           </q-btn>
         </q-toolbar-title>
-        <div><p class="txt">teste</p></div>
         <div class="btnEssentailsLinks">
-          <p></p>
           <RouterLink to="/CadastroCliente" class=""
             ><q-btn color="black" glossy="true">Cadastre-se</q-btn></RouterLink
           ><RouterLink to="/">

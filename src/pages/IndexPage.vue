@@ -1,6 +1,5 @@
 <template>
   <q-page class="flex flex-center">
-    {{ cliente }}
     <ListaProdutos
       :produtos="arrProdutos"
       @comprar="onComprar"
