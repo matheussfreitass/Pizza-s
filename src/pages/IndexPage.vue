@@ -24,18 +24,19 @@ export default defineComponent({
   data() {
     return {
       arrProdutos: [],
-
-      cliente: {
-        id: "0000",
-        nome: "Brad Luiz",
-        cpf: "123.456.789-00",
-      },
+      cliente: null,
     };
   },
   created() {
     services.getProdutos((prods) => {
       this.arrProdutos = prods;
     });
+    cartStore.cliente = {
+      id: "0000",
+      nome: "Brad Luiz",
+      cpf: "123.456.789-00",
+    };
+    this.cliente = cartStore.cliente;
   },
   methods: {
     onComprar(produto) {

@@ -11,6 +11,7 @@
 <script>
 import FormCliente from "../components/FormCliente.vue";
 import services from "src/services";
+import cartStore from "src/stores/cartStore";
 
 export default {
   name: "CadastroClientePage",
@@ -19,8 +20,11 @@ export default {
   },
   data() {
     return {
-      cliente: { nome: "", cpf: "" },
+      cliente: {},
     };
+  },
+  created() {
+    this.cliente = cartStore.cliente;
   },
   methods: {
     onSalvarCliente(cliente) {

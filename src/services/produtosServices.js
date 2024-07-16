@@ -7,9 +7,14 @@ const jsonAPI = axios.create({
 });
 const produtosServices = {
   getProdutos: (callback) => {
+    if (cartStore.produtos.length > 0) {
+      callback(cartStore.produtos);
+      return;
+    }
     jsonAPI
       .get("produtos")
       .then((retorno) => {
+        cartStore.produtos = retorno.data;
         callback(retorno.data);
       })
       .catch((erro) => {

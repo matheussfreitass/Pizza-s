@@ -11,9 +11,12 @@
           @click="toggleLeftDrawer"
         />
 
-        <q-toolbar-title>
-          <q-btn class="bg-black text-white">Pizza's</q-btn>
+        <q-toolbar-title
+          ><RouterLink to="/">
+            <q-btn class="bg-black text-white">Pizza's</q-btn>
+          </RouterLink>
           <q-btn
+            to="/checkout"
             dense
             color="yellow-9"
             round
