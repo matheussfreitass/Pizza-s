@@ -1,5 +1,6 @@
 <template>
   <q-page class="flex flex-center">
+    {{ cliente }}
     <ListaProdutos
       :produtos="arrProdutos"
       @comprar="onComprar"
@@ -23,6 +24,12 @@ export default defineComponent({
   data() {
     return {
       arrProdutos: [],
+
+      cliente: {
+        id: "0000",
+        nome: "Brad Luiz",
+        cpf: "123.456.789-00",
+      },
     };
   },
   created() {
